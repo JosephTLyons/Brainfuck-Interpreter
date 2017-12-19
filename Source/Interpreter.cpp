@@ -24,28 +24,28 @@ void Interpreter::parseText (const String &brainfuckCode)
 {
     for (int i = 0; i < brainfuckCode.length(); i++)
     {
-        if (tapeArray[i] == '+')
+        if (brainfuckCode[i] == '+')
             incrementCellValue();
         
-        else if (tapeArray[i] == '-')
+        else if (brainfuckCode[i] == '-')
             decrementCellValue();
         
-        else if (tapeArray[i] == '>')
+        else if (brainfuckCode[i] == '>')
             incrementIndex();
         
-        else if (tapeArray[i] == '<')
+        else if (brainfuckCode[i] == '<')
             decrementIndex();
         
-        else if (tapeArray[i] == ',')
+        else if (brainfuckCode[i] == ',')
             acceptInput();
         
-        else if (tapeArray[i] == '.')
+        else if (brainfuckCode[i] == '.')
             printOutput();
         
-        else if (tapeArray[i] == '[')
+        else if (brainfuckCode[i] == '[')
             openBracket();
         
-        else if (tapeArray[i] == ']')
+        else if (brainfuckCode[i] == ']')
             closedBracket();
     }
 }
