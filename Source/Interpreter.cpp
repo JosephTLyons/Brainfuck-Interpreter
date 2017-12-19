@@ -52,22 +52,22 @@ void Interpreter::parseText (const String &brainfuckCode)
 
 void Interpreter::incrementCellValue()
 {
-    
+    tapeArray.set(index, tapeArray[index] + 1);
 }
 
 void Interpreter::decrementCellValue()
 {
-    
+    tapeArray.set(index, tapeArray[index] - 1);
 }
 
 void Interpreter::incrementIndex()
 {
-    
+    index++;
 }
 
 void Interpreter::decrementIndex()
 {
-    
+    index--;
 }
 
 void Interpreter::acceptInput()
