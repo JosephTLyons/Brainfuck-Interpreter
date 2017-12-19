@@ -16,12 +16,6 @@ private:
     Array<char> tapeArray;
     int index;
     
-public:
-    Interpreter();
-    ~Interpreter();
-    
-    void parseText (const String &brainfuckCode);
-    
     // Methods for operators
     void incrementCellValue();
     void decrementCellValue();
@@ -32,6 +26,11 @@ public:
     void openBracket();
     void closedBracket();
     
+public:
+    Interpreter();
+    ~Interpreter();
+    
+    void parseText (const String &brainfuckCode);
 };
 
 #endif /* Interpreter_hpp */
