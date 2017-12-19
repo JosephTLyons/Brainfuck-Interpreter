@@ -40,7 +40,7 @@ void Interpreter::parseText (const String &brainfuckCode)
             acceptInput();
         
         else if (brainfuckCode[i] == '.')
-            printOutput();
+            addToInterpretedText();
         
         else if (brainfuckCode[i] == '[')
             openBracket();
@@ -50,19 +50,25 @@ void Interpreter::parseText (const String &brainfuckCode)
     }
 }
 
-void Interpreter::zeroOutTapeArray()
+String Interpreter::getOutputText()
 {
-    tapeArray.fill (0);
+    return outputText;
+}
+
+void Interpreter::reset()
+{
+    zeroOutTapeArray();
+    clearOutputText();
 }
 
 void Interpreter::incrementCellValue()
 {
-    tapeArray.set(index, tapeArray[index] + 1);
+    tapeArray.set (index, tapeArray[index] + 1);
 }
 
 void Interpreter::decrementCellValue()
 {
-    tapeArray.set(index, tapeArray[index] - 1);
+    tapeArray.set (index, tapeArray[index] - 1);
 }
 
 void Interpreter::incrementIndex()
@@ -80,9 +86,9 @@ void Interpreter::acceptInput()
     
 }
 
-void Interpreter::printOutput()
+void Interpreter::addToInterpretedText()
 {
-    
+    outputText += tapeArray[index];
 }
 
 void Interpreter::openBracket()
@@ -93,4 +99,14 @@ void Interpreter::openBracket()
 void Interpreter::closedBracket()
 {
     
+}
+
+void Interpreter::zeroOutTapeArray()
+{
+    tapeArray.fill (0);
+}
+
+void Interpreter::clearOutputText()
+{
+    outputText.clear();
 }

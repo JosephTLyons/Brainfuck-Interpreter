@@ -16,22 +16,28 @@ private:
     Array<unsigned char> tapeArray;
     int index;
     
+    String outputText;
+    
     // Methods for operators
     void incrementCellValue();
     void decrementCellValue();
     void incrementIndex();
     void decrementIndex();
     void acceptInput();
-    void printOutput();
+    void addToInterpretedText();
     void openBracket();
     void closedBracket();
+    
+    void zeroOutTapeArray();
+    void clearOutputText();
     
 public:
     Interpreter();
     ~Interpreter();
     
     void parseText (const String &brainfuckCode);
-    void zeroOutTapeArray();
+    String getOutputText();
+    void reset();
 };
 
 #endif /* Interpreter_hpp */
