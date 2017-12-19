@@ -21,6 +21,7 @@
 
 //[Headers]     -- You can add your own extra header files here --
 #include "../JuceLibraryCode/JuceHeader.h"
+#include "Interpreter.hpp"
 //[/Headers]
 
 
@@ -33,7 +34,8 @@
     Describe your class and how it works here!
                                                                     //[/Comments]
 */
-class GUIComponent  : public Component
+class GUIComponent  : public Component,
+                      public Button::Listener
 {
 public:
     //==============================================================================
@@ -46,11 +48,16 @@ public:
 
     void paint (Graphics& g) override;
     void resized() override;
+    void buttonClicked (Button* buttonThatWasClicked) override;
 
 
 
 private:
     //[UserVariables]   -- You can add your own custom variables in this section.
+
+    Interpreter interpreter;
+    String brainfuckCode;
+
     //[/UserVariables]
 
     //==============================================================================
@@ -58,6 +65,7 @@ private:
     ScopedPointer<TextEditor> inputEditor;
     ScopedPointer<TextEditor> outputEditor;
     ScopedPointer<TextEditor> errorMessagesEditor;
+    ScopedPointer<TextButton> executeCodeButton;
 
 
     //==============================================================================
