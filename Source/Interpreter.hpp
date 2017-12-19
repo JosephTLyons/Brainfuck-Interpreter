@@ -13,7 +13,7 @@
 class Interpreter
 {
 private:
-    Array<char> tapeArray;
+    Array<unsigned char> tapeArray;
     int index;
     
     // Methods for operators
