@@ -56,7 +56,6 @@ private:
     //[UserVariables]   -- You can add your own custom variables in this section.
 
     Interpreter interpreter;
-    String brainfuckCode;
 
     //[/UserVariables]
 

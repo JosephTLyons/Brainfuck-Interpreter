@@ -137,6 +137,9 @@ void GUIComponent::buttonClicked (Button* buttonThatWasClicked)
     if (buttonThatWasClicked == executeCodeButton)
     {
         //[UserButtonCode_executeCodeButton] -- add your button handler code here..
+        
+        interpreter.parseText (brainfuckCodeEditor->getText());
+        
         //[/UserButtonCode_executeCodeButton]
     }
 
