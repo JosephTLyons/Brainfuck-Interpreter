@@ -88,7 +88,7 @@ void Interpreter::acceptInput()
 
 void Interpreter::addToOutputText()
 {
-    outputText += tapeArray[index];
+    outputText += (char) tapeArray[index];
 }
 
 void Interpreter::openBracket()
