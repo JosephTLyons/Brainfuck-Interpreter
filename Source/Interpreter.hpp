@@ -22,6 +22,7 @@ public:
     
     void parseText (const String &brainfuckCode);
     
+    // Methods for operators
     void incrementCellValue();
     void decrementCellValue();
     void incrementIndex();
