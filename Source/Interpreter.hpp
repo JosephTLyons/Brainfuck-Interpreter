@@ -31,6 +31,7 @@ public:
     ~Interpreter();
     
     void parseText (const String &brainfuckCode);
+    void zeroOutTapeArray();
 };
 
 #endif /* Interpreter_hpp */

@@ -50,6 +50,11 @@ void Interpreter::parseText (const String &brainfuckCode)
     }
 }
 
+void Interpreter::zeroOutTapeArray()
+{
+    tapeArray.fill (0);
+}
+
 void Interpreter::incrementCellValue()
 {
     tapeArray.set(index, tapeArray[index] + 1);
