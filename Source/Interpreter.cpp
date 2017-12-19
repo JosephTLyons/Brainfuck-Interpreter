@@ -15,6 +15,11 @@ Interpreter::Interpreter()
     index = 0;
 }
 
+Interpreter::~Interpreter()
+{
+    tapeArray.clear();
+}
+
 void Interpreter::parseText (const String &brainfuckCode)
 {
     for (int i = 0; i < brainfuckCode.length(); i++)

@@ -18,6 +18,7 @@ private:
     
 public:
     Interpreter();
+    ~Interpreter();
     
     void parseText (const String &brainfuckCode);
     
