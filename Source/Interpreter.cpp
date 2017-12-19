@@ -40,7 +40,7 @@ void Interpreter::parseText (const String &brainfuckCode)
             acceptInput();
         
         else if (brainfuckCode[i] == '.')
-            addToInterpretedText();
+            addToOutputText();
         
         else if (brainfuckCode[i] == '[')
             openBracket();
@@ -86,7 +86,7 @@ void Interpreter::acceptInput()
     
 }
 
-void Interpreter::addToInterpretedText()
+void Interpreter::addToOutputText()
 {
     outputText += tapeArray[index];
 }

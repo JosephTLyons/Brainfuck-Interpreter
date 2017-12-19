@@ -24,7 +24,7 @@ private:
     void incrementIndex();
     void decrementIndex();
     void acceptInput();
-    void addToInterpretedText();
+    void addToOutputText();
     void openBracket();
     void closedBracket();
     
