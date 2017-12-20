@@ -20,12 +20,11 @@ Interpreter::~Interpreter()
 void Interpreter::zeroOut()
 {
     tapeArray.fill (0);
-    
     tapeArrayIndex = 0;
     inputTextIndex = 0;
-    
     openingBracketIndex = 0;
     closingBracketIndex = 0;
+    brainfuckCodeIndex = 0;
 }
 
 void Interpreter::incrementCellValue()
