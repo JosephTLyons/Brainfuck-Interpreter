@@ -45,7 +45,6 @@ void Interpreter::decrementCellValue()
 
 void Interpreter::incrementIndex()
 {
-    
     if (tapeArrayIndex == TAPE_ARRAY_SIZE - 1)
         warningText += "Error: Attemping to access cell 300000, index adjusted to remain at cell 29999\n";
     
