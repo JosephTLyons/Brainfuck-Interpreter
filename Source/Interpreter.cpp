@@ -84,7 +84,7 @@ void Interpreter::loop (const String &brainfuckCode, int i)
     
     closingBracketIndex = i;
     
-    // Loop through the code
+    // Loop through the code inside brackets
     while (tapeArray[tapeArrayIndex] != 0)
         parseText (brainfuckCode.substring(openingBracketIndex + 1, closingBracketIndex - 1));
     
