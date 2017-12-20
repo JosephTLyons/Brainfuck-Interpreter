@@ -165,7 +165,7 @@ void GUIComponent::resized()
     inputEditor->setBounds (0, 35, 600, 30);
     outputEditor->setBounds (0, 235, 600, 30);
     errorMessagesEditor->setBounds (0, 300, 600, 100);
-    executeCodeButton->setBounds (225, 206, 150, 25);
+    executeCodeButton->setBounds (225, 205, 150, 25);
     brainfuckCodeLabel->setBounds (0, 70, 150, 25);
     inputLabel->setBounds (0, 5, 150, 25);
     outputLabel->setBounds (0, 205, 150, 25);
@@ -237,7 +237,7 @@ BEGIN_JUCER_METADATA
               hilitecol="bfffffff" initialText="" multiline="1" retKeyStartsLine="1"
               readonly="1" scrollbars="1" caret="0" popupmenu="1"/>
   <TEXTBUTTON name="executeCodeButton" id="e8581b84cdf8cec8" memberName="executeCodeButton"
-              virtualName="" explicitFocusOrder="0" pos="225 206 150 25" buttonText="Execute"
+              virtualName="" explicitFocusOrder="0" pos="225 205 150 25" buttonText="Execute"
               connectedEdges="0" needsCallback="1" radioGroupId="0"/>
   <LABEL name="brainfuckCodeLabel" id="5421b93948ba369c" memberName="brainfuckCodeLabel"
          virtualName="" explicitFocusOrder="0" pos="0 70 150 25" edTextCol="ff000000"
