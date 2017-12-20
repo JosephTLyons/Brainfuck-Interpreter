@@ -14,6 +14,7 @@ class Interpreter
 {
 private:
     Array<unsigned char> tapeArray;
+    const int TAPE_ARRAY_SIZE = 30000;
     int tapeArrayIndex;
     
     String outputText, warningText, inputText;
