@@ -55,8 +55,8 @@ GUIComponent::GUIComponent ()
     inputEditor->setText (String());
 
     addAndMakeVisible (outputEditor = new TextEditor ("outputEditor"));
-    outputEditor->setMultiLine (false);
-    outputEditor->setReturnKeyStartsNewLine (false);
+    outputEditor->setMultiLine (true);
+    outputEditor->setReturnKeyStartsNewLine (true);
     outputEditor->setReadOnly (true);
     outputEditor->setScrollbarsShown (true);
     outputEditor->setCaretVisible (false);
@@ -230,7 +230,7 @@ BEGIN_JUCER_METADATA
               readonly="0" scrollbars="1" caret="1" popupmenu="1"/>
   <TEXTEDITOR name="outputEditor" id="e6b0e684a57da253" memberName="outputEditor"
               virtualName="" explicitFocusOrder="0" pos="0 235 600 100" textcol="ffffffff"
-              hilitecol="bfffffff" initialText="" multiline="0" retKeyStartsLine="0"
+              hilitecol="bfffffff" initialText="" multiline="1" retKeyStartsLine="1"
               readonly="1" scrollbars="1" caret="0" popupmenu="1"/>
   <TEXTEDITOR name="errorMessagesEditor" id="d9c721f19ad3d913" memberName="errorMessagesEditor"
               virtualName="" explicitFocusOrder="0" pos="0 370 600 100" textcol="ffffffff"
