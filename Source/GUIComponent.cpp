@@ -116,7 +116,7 @@ GUIComponent::GUIComponent ()
     //[UserPreSize]
     //[/UserPreSize]
 
-    setSize (600, 400);
+    setSize (600, 470);
 
 
     //[Constructor] You can add your own custom stuff here..
@@ -163,13 +163,13 @@ void GUIComponent::resized()
 
     brainfuckCodeEditor->setBounds (0, 100, 600, 100);
     inputEditor->setBounds (0, 35, 600, 30);
-    outputEditor->setBounds (0, 235, 600, 30);
-    errorMessagesEditor->setBounds (0, 300, 600, 100);
+    outputEditor->setBounds (0, 235, 600, 100);
+    errorMessagesEditor->setBounds (0, 370, 600, 100);
     executeCodeButton->setBounds (225, 205, 150, 25);
     brainfuckCodeLabel->setBounds (0, 70, 150, 25);
     inputLabel->setBounds (0, 5, 150, 25);
     outputLabel->setBounds (0, 205, 150, 25);
-    errorsAndWarningsLabel->setBounds (0, 270, 150, 25);
+    errorsAndWarningsLabel->setBounds (0, 340, 150, 25);
     //[UserResized] Add your own custom resize handling here..
     //[/UserResized]
 }
@@ -218,7 +218,7 @@ BEGIN_JUCER_METADATA
 <JUCER_COMPONENT documentType="Component" className="GUIComponent" componentName=""
                  parentClasses="public Component" constructorParams="" variableInitialisers=""
                  snapPixels="8" snapActive="1" snapShown="1" overlayOpacity="0.330"
-                 fixedSize="1" initialWidth="600" initialHeight="400">
+                 fixedSize="1" initialWidth="600" initialHeight="470">
   <BACKGROUND backgroundColour="ff505050"/>
   <TEXTEDITOR name="brainfuckCodeEditor" id="59d491ad053b0a3f" memberName="brainfuckCodeEditor"
               virtualName="" explicitFocusOrder="0" pos="0 100 600 100" textcol="ffffffff"
@@ -229,11 +229,11 @@ BEGIN_JUCER_METADATA
               hilitecol="bfffffff" initialText="" multiline="0" retKeyStartsLine="0"
               readonly="0" scrollbars="1" caret="1" popupmenu="1"/>
   <TEXTEDITOR name="outputEditor" id="e6b0e684a57da253" memberName="outputEditor"
-              virtualName="" explicitFocusOrder="0" pos="0 235 600 30" textcol="ffffffff"
+              virtualName="" explicitFocusOrder="0" pos="0 235 600 100" textcol="ffffffff"
               hilitecol="bfffffff" initialText="" multiline="0" retKeyStartsLine="0"
               readonly="1" scrollbars="1" caret="0" popupmenu="1"/>
   <TEXTEDITOR name="errorMessagesEditor" id="d9c721f19ad3d913" memberName="errorMessagesEditor"
-              virtualName="" explicitFocusOrder="0" pos="0 300 600 100" textcol="ffffffff"
+              virtualName="" explicitFocusOrder="0" pos="0 370 600 100" textcol="ffffffff"
               hilitecol="bfffffff" initialText="" multiline="1" retKeyStartsLine="1"
               readonly="1" scrollbars="1" caret="0" popupmenu="1"/>
   <TEXTBUTTON name="executeCodeButton" id="e8581b84cdf8cec8" memberName="executeCodeButton"
@@ -255,7 +255,7 @@ BEGIN_JUCER_METADATA
          focusDiscardsChanges="0" fontname="Default font" fontsize="15"
          kerning="0" bold="0" italic="0" justification="33"/>
   <LABEL name="errorsAndWarningsLabel" id="af33826739efbb85" memberName="errorsAndWarningsLabel"
-         virtualName="" explicitFocusOrder="0" pos="0 270 150 25" edTextCol="ff000000"
+         virtualName="" explicitFocusOrder="0" pos="0 340 150 25" edTextCol="ff000000"
          edBkgCol="0" labelText="Errors and Warnings:" editableSingleClick="0"
          editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
          fontsize="15" kerning="0" bold="0" italic="0" justification="33"/>
