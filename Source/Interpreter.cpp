@@ -15,7 +15,6 @@ Interpreter::Interpreter()
 
 Interpreter::~Interpreter()
 {
-    
 }
 
 void Interpreter::zeroOut()
