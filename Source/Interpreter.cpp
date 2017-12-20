@@ -24,6 +24,9 @@ void Interpreter::zeroOut()
     
     tapeArrayIndex = 0;
     inputTextIndex = 0;
+    
+    openingBracketIndex = 0;
+    closingBracketIndex = 0;
 }
 
 void Interpreter::incrementCellValue()
@@ -70,14 +73,29 @@ void Interpreter::addToOutputText()
     outputText += (char) tapeArray[tapeArrayIndex];
 }
 
-void Interpreter::openBracket()
+void Interpreter::openBracket (const String &brainfuckCode, int i)
 {
+    openingBracketIndex = i;
     
+    // Search for closing bracket
+    for (; brainfuckCode[i] != ']'; i++)
+    {
+    }
+    
+    closingBracketIndex = i;
+    
+    while (tapeArray[tapeArrayIndex] != 0)
+    {
+        parseText (brainfuckCode.substring(openingBracketIndex + 1, closingBracketIndex - 1));
+    }
 }
 
 void Interpreter::closedBracket()
 {
-    
+    if (tapeArray[tapeArrayIndex - 1] != 0)
+    {
+        // Go back to index of
+    }
 }
 
 void Interpreter::parseText (const String &brainfuckCode)
@@ -103,7 +121,7 @@ void Interpreter::parseText (const String &brainfuckCode)
             addToOutputText();
         
         else if (brainfuckCode[i] == '[')
-            openBracket();
+            openBracket (brainfuckCode, i);
         
         else if (brainfuckCode[i] == ']')
             closedBracket();

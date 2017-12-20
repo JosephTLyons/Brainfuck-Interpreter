@@ -19,6 +19,8 @@ private:
     String outputText, warningText, inputText;
     int inputTextIndex;
     
+    int openingBracketIndex, closingBracketIndex;
+    
     // Methods for operators
     void incrementCellValue();
     void decrementCellValue();
@@ -26,7 +28,7 @@ private:
     void decrementIndex();
     void acceptInput();
     void addToOutputText();
-    void openBracket();
+    void openBracket (const String &brainfuckCode, int i);
     void closedBracket();
     
 public:
