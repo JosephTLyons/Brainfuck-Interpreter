@@ -14,9 +14,10 @@ class Interpreter
 {
 private:
     Array<unsigned char> tapeArray;
-    int index;
+    int tapeArrayIndex;
     
-    String outputText;
+    String outputText, warningText, inputText;
+    int inputTextIndex;
     
     // Methods for operators
     void incrementCellValue();
@@ -28,15 +29,14 @@ private:
     void openBracket();
     void closedBracket();
     
-    void zeroOutTapeArray();
-    void clearOutputText();
-    
 public:
     Interpreter();
     ~Interpreter();
     
     void parseText (const String &brainfuckCode);
+    void setInputText (const String &input);
     String getOutputText();
+    String getWarningText();
     void reset();
 };
 

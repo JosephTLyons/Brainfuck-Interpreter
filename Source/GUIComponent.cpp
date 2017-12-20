@@ -182,13 +182,16 @@ void GUIComponent::buttonClicked (Button* buttonThatWasClicked)
     if (buttonThatWasClicked == executeCodeButton)
     {
         //[UserButtonCode_executeCodeButton] -- add your button handler code here..
+        
+        outputEditor->clear();
+        errorMessagesEditor->clear();
+        
+        
         interpreter.setInputText (inputEditor->getText());
         interpreter.parseText (brainfuckCodeEditor->getText());
         outputEditor->setText (interpreter.getOutputText());
         errorMessagesEditor->setText (interpreter.getWarningText());
         interpreter.reset();
-        outputEditor->clear();
-        errorMessagesEditor->clear();
 
         //[/UserButtonCode_executeCodeButton]
     }

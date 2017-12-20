@@ -12,12 +12,67 @@ Interpreter::Interpreter()
     tapeArray.resize (30000);
     tapeArray.fill (0);
     
-    index = 0;
+    tapeArrayIndex = 0;
+    inputTextIndex = 0;
 }
 
 Interpreter::~Interpreter()
 {
-    tapeArray.clear();
+    
+}
+
+void Interpreter::incrementCellValue()
+{
+    if (tapeArray[tapeArrayIndex] == 255)
+        warningText += "Positive overflow occured at cell " + (String) tapeArrayIndex + "\n";
+    
+    tapeArray.set (tapeArrayIndex, tapeArray[tapeArrayIndex] + 1);
+}
+
+void Interpreter::decrementCellValue()
+{
+    if (tapeArray[tapeArrayIndex] == 0)
+        warningText += "Negative overflow occured at cell " + (String) tapeArrayIndex + "\n";
+    
+    tapeArray.set (tapeArrayIndex, tapeArray[tapeArrayIndex] - 1);
+}
+
+void Interpreter::incrementIndex()
+{
+    if (tapeArrayIndex == tapeArray.size())
+        warningText += "Attemping to go access cell 300000, index adjusted to stay at cell 29999\n";
+    
+    else
+        tapeArrayIndex++;
+}
+
+void Interpreter::decrementIndex()
+{
+    if (tapeArrayIndex == 0)
+        warningText += "Attemping to go access cell -1, index adjusted to stay at cell 0\n";
+    
+    else
+        tapeArrayIndex--;
+}
+
+void Interpreter::acceptInput()
+{
+    tapeArray.set (tapeArrayIndex, inputText[inputTextIndex++]);
+}
+
+void Interpreter::addToOutputText()
+{
+    outputText += (char) tapeArray[tapeArrayIndex];
+}
+
+void Interpreter::openBracket()
+{
+    
+}
+
+void Interpreter::closedBracket()
+{
+    
 }
 
 void Interpreter::parseText (const String &brainfuckCode)
@@ -50,63 +105,29 @@ void Interpreter::parseText (const String &brainfuckCode)
     }
 }
 
+void Interpreter::setInputText (const String &input)
+{
+    inputText = input;
+}
+
 String Interpreter::getOutputText()
 {
     return outputText;
 }
 
+String Interpreter::getWarningText()
+{
+    return warningText;
+}
+
 void Interpreter::reset()
 {
-    zeroOutTapeArray();
-    clearOutputText();
-}
-
-void Interpreter::incrementCellValue()
-{
-    tapeArray.set (index, tapeArray[index] + 1);
-}
-
-void Interpreter::decrementCellValue()
-{
-    tapeArray.set (index, tapeArray[index] - 1);
-}
-
-void Interpreter::incrementIndex()
-{
-    index++;
-}
-
-void Interpreter::decrementIndex()
-{
-    index--;
-}
-
-void Interpreter::acceptInput()
-{
+    tapeArrayIndex = 0;
+    inputTextIndex = 0;
     
-}
-
-void Interpreter::addToOutputText()
-{
-    outputText += (char) tapeArray[index];
-}
-
-void Interpreter::openBracket()
-{
-    
-}
-
-void Interpreter::closedBracket()
-{
-    
-}
-
-void Interpreter::zeroOutTapeArray()
-{
     tapeArray.fill (0);
-}
-
-void Interpreter::clearOutputText()
-{
+    
     outputText.clear();
+    warningText.clear();
+    inputText.clear();
 }

@@ -65,6 +65,10 @@ private:
     ScopedPointer<TextEditor> outputEditor;
     ScopedPointer<TextEditor> errorMessagesEditor;
     ScopedPointer<TextButton> executeCodeButton;
+    ScopedPointer<Label> brainfuckCodeLabel;
+    ScopedPointer<Label> inputLabel;
+    ScopedPointer<Label> outputLabel;
+    ScopedPointer<Label> errorsAndWarningsLabel;
 
 
     //==============================================================================
