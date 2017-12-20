@@ -28,8 +28,7 @@ private:
     void decrementIndex();
     void acceptInput();
     void addToOutputText();
-    void openBracket (const String &brainfuckCode, int i);
-    void closedBracket();
+    void loop (const String &brainfuckCode, int i);
     
 public:
     Interpreter();

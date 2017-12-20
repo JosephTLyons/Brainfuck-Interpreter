@@ -73,7 +73,7 @@ void Interpreter::addToOutputText()
     outputText += (char) tapeArray[tapeArrayIndex];
 }
 
-void Interpreter::openBracket (const String &brainfuckCode, int i)
+void Interpreter::loop (const String &brainfuckCode, int i)
 {
     openingBracketIndex = i;
     
@@ -87,14 +87,6 @@ void Interpreter::openBracket (const String &brainfuckCode, int i)
     while (tapeArray[tapeArrayIndex] != 0)
     {
         parseText (brainfuckCode.substring(openingBracketIndex + 1, closingBracketIndex - 1));
-    }
-}
-
-void Interpreter::closedBracket()
-{
-    if (tapeArray[tapeArrayIndex - 1] != 0)
-    {
-        // Go back to index of
     }
 }
 
@@ -121,10 +113,7 @@ void Interpreter::parseText (const String &brainfuckCode)
             addToOutputText();
         
         else if (brainfuckCode[i] == '[')
-            openBracket (brainfuckCode, i);
-        
-        else if (brainfuckCode[i] == ']')
-            closedBracket();
+            loop (brainfuckCode, i);
     }
 }
 
