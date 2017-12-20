@@ -46,7 +46,7 @@ void Interpreter::decrementCellValue()
 void Interpreter::incrementIndex()
 {
     if (tapeArrayIndex == tapeArray.size())
-        warningText += "Error: Attemping to go access cell 300000, index adjusted to stay at cell 29999\n";
+        warningText += "Error: Attemping to go access cell 300000, index adjusted to remain at cell 29999\n";
     
     else
         tapeArrayIndex++;
@@ -55,7 +55,7 @@ void Interpreter::incrementIndex()
 void Interpreter::decrementIndex()
 {
     if (tapeArrayIndex == 0)
-        warningText += "Error: Attemping to go access cell -1, index adjusted to stay at cell 0\n";
+        warningText += "Error: Attemping to go access cell -1, index adjusted to remain at cell 0\n";
     
     else
         tapeArrayIndex--;
