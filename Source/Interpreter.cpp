@@ -84,36 +84,40 @@ void Interpreter::loop (const String &brainfuckCode, int i)
     
     closingBracketIndex = i;
     
+    // Loop through the code
     while (tapeArray[tapeArrayIndex] != 0)
-    {
         parseText (brainfuckCode.substring(openingBracketIndex + 1, closingBracketIndex - 1));
-    }
+    
+    // Assign the closingBracketIndex so that when we return to the parsing method
+    // We don't execute the code in the loop one more time
+    brainfuckCodeIndex = closingBracketIndex;
 }
 
 void Interpreter::parseText (const String &brainfuckCode)
 {
-    for (int i = 0; i < brainfuckCode.length(); i++)
+    
+    for (brainfuckCodeIndex = 0; brainfuckCodeIndex < brainfuckCode.length(); brainfuckCodeIndex++)
     {
-        if (brainfuckCode[i] == '+')
+        if (brainfuckCode[brainfuckCodeIndex] == '+')
             incrementCellValue();
         
-        else if (brainfuckCode[i] == '-')
+        else if (brainfuckCode[brainfuckCodeIndex] == '-')
             decrementCellValue();
         
-        else if (brainfuckCode[i] == '>')
+        else if (brainfuckCode[brainfuckCodeIndex] == '>')
             incrementIndex();
         
-        else if (brainfuckCode[i] == '<')
+        else if (brainfuckCode[brainfuckCodeIndex] == '<')
             decrementIndex();
         
-        else if (brainfuckCode[i] == ',')
+        else if (brainfuckCode[brainfuckCodeIndex] == ',')
             acceptInput();
         
-        else if (brainfuckCode[i] == '.')
+        else if (brainfuckCode[brainfuckCodeIndex] == '.')
             addToOutputText();
         
-        else if (brainfuckCode[i] == '[')
-            loop (brainfuckCode, i);
+        else if (brainfuckCode[brainfuckCodeIndex] == '[')
+            loop (brainfuckCode, brainfuckCodeIndex);
     }
 }
 

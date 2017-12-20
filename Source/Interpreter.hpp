@@ -20,6 +20,7 @@ private:
     int inputTextIndex;
     
     int openingBracketIndex, closingBracketIndex;
+    int brainfuckCodeIndex;
     
     // Methods for operators
     void incrementCellValue();
