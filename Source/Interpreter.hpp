@@ -33,6 +33,8 @@ public:
     Interpreter();
     ~Interpreter();
     
+    void zeroOut();
+    
     void parseText (const String &brainfuckCode);
     void setInputText (const String &input);
     String getOutputText();

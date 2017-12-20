@@ -10,15 +10,20 @@
 Interpreter::Interpreter()
 {
     tapeArray.resize (30000);
-    tapeArray.fill (0);
-    
-    tapeArrayIndex = 0;
-    inputTextIndex = 0;
+    zeroOut();
 }
 
 Interpreter::~Interpreter()
 {
     
+}
+
+void Interpreter::zeroOut()
+{
+    tapeArray.fill (0);
+    
+    tapeArrayIndex = 0;
+    inputTextIndex = 0;
 }
 
 void Interpreter::incrementCellValue()
@@ -122,10 +127,7 @@ String Interpreter::getWarningText()
 
 void Interpreter::reset()
 {
-    tapeArrayIndex = 0;
-    inputTextIndex = 0;
-    
-    tapeArray.fill (0);
+    zeroOut();
     
     outputText.clear();
     warningText.clear();
