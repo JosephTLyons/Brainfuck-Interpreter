@@ -93,7 +93,6 @@ void Interpreter::loop (const String &brainfuckCode, int i)
 
 void Interpreter::parseText (const String &brainfuckCode)
 {
-    
     for (brainfuckCodeIndex = 0; brainfuckCodeIndex < brainfuckCode.length(); brainfuckCodeIndex++)
     {
         if (brainfuckCode[brainfuckCodeIndex] == '+')
