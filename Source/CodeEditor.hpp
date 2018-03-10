@@ -36,6 +36,8 @@ private FilenameComponentListener
 public:
     CodeEditor()
     {
+        codeDocument.insertText (0, "Brainfuck code goes here");
+        
         setOpaque (true);
 
         // Create the editor..
