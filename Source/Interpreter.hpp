@@ -16,13 +16,13 @@ private:
     Array<unsigned char> tapeArray;
     const int TAPE_ARRAY_SIZE = 30000;
     int tapeArrayIndex;
-    
+
     String outputText, warningText, inputText;
     int inputTextIndex;
-    
+
     int openingBracketIndex, closingBracketIndex;
     int brainfuckCodeIndex;
-    
+
     // Methods for operators
     void incrementCellValue();
     void decrementCellValue();
@@ -31,13 +31,13 @@ private:
     void acceptInput();
     void addToOutputText();
     void loop (const String &brainfuckCode, int i);
-    
+
 public:
     Interpreter();
     ~Interpreter();
-    
+
     void zeroOut();
-    
+
     void parseText (const String &brainfuckCode);
     void setInputText (const String &input);
     String getOutputText();

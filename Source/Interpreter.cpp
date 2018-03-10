@@ -31,7 +31,7 @@ void Interpreter::incrementCellValue()
 {
     if (tapeArray[tapeArrayIndex] == 255)
         warningText += "Warning: Positive overflow occured at cell " + (String) tapeArrayIndex + "\n";
-    
+
     tapeArray.set (tapeArrayIndex, tapeArray[tapeArrayIndex] + 1);
 }
 
@@ -39,7 +39,7 @@ void Interpreter::decrementCellValue()
 {
     if (tapeArray[tapeArrayIndex] == 0)
         warningText += "Warning: Negative overflow occured at cell " + (String) tapeArrayIndex + "\n";
-    
+
     tapeArray.set (tapeArrayIndex, tapeArray[tapeArrayIndex] - 1);
 }
 
@@ -47,7 +47,7 @@ void Interpreter::incrementIndex()
 {
     if (tapeArrayIndex == TAPE_ARRAY_SIZE - 1)
         warningText += "Error: Attemping to access cell 300000, index adjusted to remain at cell 29999\n";
-    
+
     else
         tapeArrayIndex++;
 }
@@ -56,7 +56,7 @@ void Interpreter::decrementIndex()
 {
     if (tapeArrayIndex == 0)
         warningText += "Error: Attemping to access cell -1, index adjusted to remain at cell 0\n";
-    
+
     else
         tapeArrayIndex--;
 }
@@ -74,7 +74,7 @@ void Interpreter::addToOutputText()
 void Interpreter::loop (const String &brainfuckCode, int i)
 {
     openingBracketIndex = i;
-    
+
     // Search for closing bracket
     for (; brainfuckCode[i] != ']'; i++)
     {
@@ -85,13 +85,13 @@ void Interpreter::loop (const String &brainfuckCode, int i)
             return;
         }
     }
-    
+
     closingBracketIndex = i;
-    
+
     // Loop through the code inside brackets
     while (tapeArray[tapeArrayIndex] != 0)
         parseText (brainfuckCode.substring(openingBracketIndex + 1, closingBracketIndex - 1));
-    
+
     // Assign the closingBracketIndex so that when we return to the parsing method
     // We don't execute the code in the loop one more time
     brainfuckCodeIndex = closingBracketIndex;
@@ -99,32 +99,29 @@ void Interpreter::loop (const String &brainfuckCode, int i)
 
 void Interpreter::parseText (const String &brainfuckCode)
 {
-<<<<<<< HEAD
 //    Logger::writeToLog ("Length of array is " + (String) brainfuckCode.length());
 //    Logger::writeToLog (brainfuckCode);
 
-=======
->>>>>>> 65b0b9cc2acbf894e2aeedb831c597938663a7c1
     for (brainfuckCodeIndex = 0; brainfuckCodeIndex < brainfuckCode.length(); brainfuckCodeIndex++)
     {
         if (brainfuckCode[brainfuckCodeIndex] == '+')
             incrementCellValue();
-        
+
         else if (brainfuckCode[brainfuckCodeIndex] == '-')
             decrementCellValue();
-        
+
         else if (brainfuckCode[brainfuckCodeIndex] == '>')
             incrementIndex();
-        
+
         else if (brainfuckCode[brainfuckCodeIndex] == '<')
             decrementIndex();
-        
+
         else if (brainfuckCode[brainfuckCodeIndex] == ',')
             acceptInput();
-        
+
         else if (brainfuckCode[brainfuckCodeIndex] == '.')
             addToOutputText();
-        
+
         else if (brainfuckCode[brainfuckCodeIndex] == '[')
             loop (brainfuckCode, brainfuckCodeIndex);
     }
@@ -148,7 +145,7 @@ String Interpreter::getWarningText()
 void Interpreter::reset()
 {
     zeroOut();
-    
+
     outputText.clear();
     warningText.clear();
     inputText.clear();
