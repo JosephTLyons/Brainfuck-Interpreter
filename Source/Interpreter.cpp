@@ -78,6 +78,12 @@ void Interpreter::loop (const String &brainfuckCode, int i)
     // Search for closing bracket
     for (; brainfuckCode[i] != ']'; i++)
     {
+        // if not found, leave looping function (fix bug here with code "+ [ + }")
+        if (i == TAPE_ARRAY_SIZE - 1)
+        {
+            warningText += "Missing ']'";
+            return;
+        }
     }
     
     closingBracketIndex = i;
@@ -93,7 +99,9 @@ void Interpreter::loop (const String &brainfuckCode, int i)
 
 void Interpreter::parseText (const String &brainfuckCode)
 {
-    
+//    Logger::writeToLog ("Length of array is " + (String) brainfuckCode.length());
+//    Logger::writeToLog (brainfuckCode);
+
     for (brainfuckCodeIndex = 0; brainfuckCodeIndex < brainfuckCode.length(); brainfuckCodeIndex++)
     {
         if (brainfuckCode[brainfuckCodeIndex] == '+')
