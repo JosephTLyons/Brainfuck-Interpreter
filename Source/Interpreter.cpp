@@ -30,7 +30,7 @@ void Interpreter::zeroOut()
 void Interpreter::incrementCellValue()
 {
     if (tapeArray[tapeArrayIndex] == 255)
-        warningText += "Warning: Positive overflow occured at cell " + (String) tapeArrayIndex + "\n";
+        warningText += "Warning: Positive overflow occured at cell " + (String) tapeArrayIndex + ".\n";
 
     tapeArray.set (tapeArrayIndex, tapeArray[tapeArrayIndex] + 1);
 }
@@ -38,7 +38,7 @@ void Interpreter::incrementCellValue()
 void Interpreter::decrementCellValue()
 {
     if (tapeArray[tapeArrayIndex] == 0)
-        warningText += "Warning: Negative overflow occured at cell " + (String) tapeArrayIndex + "\n";
+        warningText += "Warning: Negative overflow occured at cell " + (String) tapeArrayIndex + ".\n";
 
     tapeArray.set (tapeArrayIndex, tapeArray[tapeArrayIndex] - 1);
 }
@@ -46,7 +46,7 @@ void Interpreter::decrementCellValue()
 void Interpreter::incrementIndex()
 {
     if (tapeArrayIndex == TAPE_ARRAY_SIZE - 1)
-        warningText += "Error: Attemping to access cell 300000, index adjusted to remain at cell 29999\n";
+        warningText += "Error: Attemping to access cell 300000, index adjusted to remain at cell 29999.\n";
 
     else
         tapeArrayIndex++;
@@ -55,7 +55,7 @@ void Interpreter::incrementIndex()
 void Interpreter::decrementIndex()
 {
     if (tapeArrayIndex == 0)
-        warningText += "Error: Attemping to access cell -1, index adjusted to remain at cell 0\n";
+        warningText += "Error: Attemping to access cell -1, index adjusted to remain at cell 0.\n";
 
     else
         tapeArrayIndex--;
@@ -81,7 +81,7 @@ void Interpreter::loop (const String &brainfuckCode, int i)
         // if not found, leave looping function
         if (i == (brainfuckCode.length() - 1) || (i == (TAPE_ARRAY_SIZE - 1)))
         {
-            warningText += "Missing ']'";
+            warningText += "Missing ']'.";
             return;
         }
     }
