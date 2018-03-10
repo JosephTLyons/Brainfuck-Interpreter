@@ -1,9 +1,17 @@
 #  TODO
 
+## Features
+* Make GUI resizeable
+
+## Enhancements
 * Refine codeEditor (font size, remove C++ specific colors)
 * Make all fonts monospace fonts
+* Create README.md
+
+## Bugs
 * Get nested loops working
 * Fix bug with printing values when decrementing cells from 0
-* Create README.md
-* Make GUI resizeable
+
+
+## Miscellaneous
 * Clean up code in interpreter by removing Logger statements and such
