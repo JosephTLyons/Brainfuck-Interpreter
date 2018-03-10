@@ -41,8 +41,9 @@ public:
         setOpaque (true);
 
         // Create the editor..
-        addAndMakeVisible (editor = new CodeEditorComponent (codeDocument, &cppTokeniser));
-
+        //addAndMakeVisible (editor = new CodeEditorComponent (codeDocument, &cppTokeniserFunctions));
+        addAndMakeVisible (editor = new CodeEditorComponent (codeDocument, 0));
+        
         lookAndFeelChanged();
     }
 
@@ -72,7 +73,8 @@ private:
     CodeDocument codeDocument;
 
     // this is a tokeniser to apply the C++ syntax highlighting
-    CPlusPlusCodeTokeniser cppTokeniser;
+    //CPlusPlusCodeTokeniser cppTokeniser;
+    
 
     // the editor component
     ScopedPointer<CodeEditorComponent> editor;
@@ -89,10 +91,10 @@ private:
             editor->setColourScheme (useLight ? getLightCodeEditorColourScheme()
                                      : getDarkCodeEditorColourScheme());
         }
-        else
-        {
-            editor->setColourScheme (cppTokeniser.getDefaultColourScheme());
-        }
+//        else
+//        {
+//            editor->setColourScheme (cppTokeniser.getDefaultColourScheme());
+//        }
     }
 
     CodeEditorComponent::ColourScheme getDarkCodeEditorColourScheme()
