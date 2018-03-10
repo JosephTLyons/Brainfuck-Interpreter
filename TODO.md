@@ -12,4 +12,4 @@
 
 
 # Miscellaneous
-* Clean up code in interpreter by removing Logger statements and such
+* Clean up code in Interpreter.cpp (such as the looping function)
