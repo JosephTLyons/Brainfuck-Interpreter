@@ -7,12 +7,12 @@
   the "//[xyz]" and "//[/xyz]" sections will be retained when the file is loaded
   and re-saved.
 
-  Created with Projucer version: 5.2.0
+  Created with Projucer version: 5.2.1
 
   ------------------------------------------------------------------------------
 
-  The Projucer is part of the JUCE library - "Jules' Utility Class Extensions"
-  Copyright (c) 2015 - ROLI Ltd.
+  The Projucer is part of the JUCE library.
+  Copyright (c) 2017 - ROLI Ltd.
 
   ==============================================================================
 */
@@ -43,6 +43,8 @@ GUIComponent::GUIComponent ()
     brainfuckCodeEditor->setColour (TextEditor::highlightColourId, Colour (0xbfffffff));
     brainfuckCodeEditor->setText (String());
 
+    brainfuckCodeEditor->setBounds (0, 100, 600, 100);
+
     addAndMakeVisible (inputEditor = new TextEditor ("inputEditor"));
     inputEditor->setMultiLine (false);
     inputEditor->setReturnKeyStartsNewLine (false);
@@ -53,6 +55,8 @@ GUIComponent::GUIComponent ()
     inputEditor->setColour (TextEditor::textColourId, Colours::white);
     inputEditor->setColour (TextEditor::highlightColourId, Colour (0xbfffffff));
     inputEditor->setText (String());
+
+    inputEditor->setBounds (0, 35, 600, 30);
 
     addAndMakeVisible (outputEditor = new TextEditor ("outputEditor"));
     outputEditor->setMultiLine (true);
@@ -65,6 +69,8 @@ GUIComponent::GUIComponent ()
     outputEditor->setColour (TextEditor::highlightColourId, Colour (0xbfffffff));
     outputEditor->setText (String());
 
+    outputEditor->setBounds (0, 235, 600, 100);
+
     addAndMakeVisible (errorMessagesEditor = new TextEditor ("errorMessagesEditor"));
     errorMessagesEditor->setMultiLine (true);
     errorMessagesEditor->setReturnKeyStartsNewLine (true);
@@ -76,9 +82,13 @@ GUIComponent::GUIComponent ()
     errorMessagesEditor->setColour (TextEditor::highlightColourId, Colour (0xbfffffff));
     errorMessagesEditor->setText (String());
 
+    errorMessagesEditor->setBounds (0, 370, 600, 100);
+
     addAndMakeVisible (executeCodeButton = new TextButton ("executeCodeButton"));
     executeCodeButton->setButtonText (TRANS("Execute"));
     executeCodeButton->addListener (this);
+
+    executeCodeButton->setBounds (225, 205, 150, 25);
 
     addAndMakeVisible (brainfuckCodeLabel = new Label ("brainfuckCodeLabel",
                                                        TRANS("Brainfuck Code:")));
@@ -88,6 +98,8 @@ GUIComponent::GUIComponent ()
     brainfuckCodeLabel->setColour (TextEditor::textColourId, Colours::black);
     brainfuckCodeLabel->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
 
+    brainfuckCodeLabel->setBounds (0, 70, 150, 25);
+
     addAndMakeVisible (inputLabel = new Label ("inputLabel",
                                                TRANS("Input:")));
     inputLabel->setFont (Font (15.00f, Font::plain).withTypefaceStyle ("Regular"));
@@ -95,6 +107,8 @@ GUIComponent::GUIComponent ()
     inputLabel->setEditable (false, false, false);
     inputLabel->setColour (TextEditor::textColourId, Colours::black);
     inputLabel->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
+
+    inputLabel->setBounds (0, 5, 150, 25);
 
     addAndMakeVisible (outputLabel = new Label ("outputLabel",
                                                 TRANS("Output:")));
@@ -104,6 +118,8 @@ GUIComponent::GUIComponent ()
     outputLabel->setColour (TextEditor::textColourId, Colours::black);
     outputLabel->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
 
+    outputLabel->setBounds (0, 205, 150, 25);
+
     addAndMakeVisible (errorsAndWarningsLabel = new Label ("errorsAndWarningsLabel",
                                                            TRANS("Errors and Warnings:")));
     errorsAndWarningsLabel->setFont (Font (15.00f, Font::plain).withTypefaceStyle ("Regular"));
@@ -111,6 +127,8 @@ GUIComponent::GUIComponent ()
     errorsAndWarningsLabel->setEditable (false, false, false);
     errorsAndWarningsLabel->setColour (TextEditor::textColourId, Colours::black);
     errorsAndWarningsLabel->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
+
+    errorsAndWarningsLabel->setBounds (0, 340, 150, 25);
 
 
     //[UserPreSize]
@@ -120,7 +138,6 @@ GUIComponent::GUIComponent ()
 
 
     //[Constructor] You can add your own custom stuff here..
-
     //[/Constructor]
 }
 
@@ -161,15 +178,6 @@ void GUIComponent::resized()
     //[UserPreResize] Add your own custom resize code here..
     //[/UserPreResize]
 
-    brainfuckCodeEditor->setBounds (0, 100, 600, 100);
-    inputEditor->setBounds (0, 35, 600, 30);
-    outputEditor->setBounds (0, 235, 600, 100);
-    errorMessagesEditor->setBounds (0, 370, 600, 100);
-    executeCodeButton->setBounds (225, 205, 150, 25);
-    brainfuckCodeLabel->setBounds (0, 70, 150, 25);
-    inputLabel->setBounds (0, 5, 150, 25);
-    outputLabel->setBounds (0, 205, 150, 25);
-    errorsAndWarningsLabel->setBounds (0, 340, 150, 25);
     //[UserResized] Add your own custom resize handling here..
     //[/UserResized]
 }
@@ -185,7 +193,6 @@ void GUIComponent::buttonClicked (Button* buttonThatWasClicked)
 
         outputEditor->clear();
         errorMessagesEditor->clear();
-
 
         interpreter.setInputText (inputEditor->getText());
         interpreter.parseText (brainfuckCodeEditor->getText());
@@ -243,22 +250,24 @@ BEGIN_JUCER_METADATA
          virtualName="" explicitFocusOrder="0" pos="0 70 150 25" edTextCol="ff000000"
          edBkgCol="0" labelText="Brainfuck Code:" editableSingleClick="0"
          editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
-         fontsize="15" kerning="0" bold="0" italic="0" justification="33"/>
+         fontsize="15.00000000000000000000" kerning="0.00000000000000000000"
+         bold="0" italic="0" justification="33"/>
   <LABEL name="inputLabel" id="e04ec47e05f2378c" memberName="inputLabel"
          virtualName="" explicitFocusOrder="0" pos="0 5 150 25" edTextCol="ff000000"
          edBkgCol="0" labelText="Input:" editableSingleClick="0" editableDoubleClick="0"
-         focusDiscardsChanges="0" fontname="Default font" fontsize="15"
-         kerning="0" bold="0" italic="0" justification="33"/>
+         focusDiscardsChanges="0" fontname="Default font" fontsize="15.00000000000000000000"
+         kerning="0.00000000000000000000" bold="0" italic="0" justification="33"/>
   <LABEL name="outputLabel" id="f84f3698f64703b8" memberName="outputLabel"
          virtualName="" explicitFocusOrder="0" pos="0 205 150 25" edTextCol="ff000000"
          edBkgCol="0" labelText="Output:" editableSingleClick="0" editableDoubleClick="0"
-         focusDiscardsChanges="0" fontname="Default font" fontsize="15"
-         kerning="0" bold="0" italic="0" justification="33"/>
+         focusDiscardsChanges="0" fontname="Default font" fontsize="15.00000000000000000000"
+         kerning="0.00000000000000000000" bold="0" italic="0" justification="33"/>
   <LABEL name="errorsAndWarningsLabel" id="af33826739efbb85" memberName="errorsAndWarningsLabel"
          virtualName="" explicitFocusOrder="0" pos="0 340 150 25" edTextCol="ff000000"
          edBkgCol="0" labelText="Errors and Warnings:" editableSingleClick="0"
          editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
-         fontsize="15" kerning="0" bold="0" italic="0" justification="33"/>
+         fontsize="15.00000000000000000000" kerning="0.00000000000000000000"
+         bold="0" italic="0" justification="33"/>
 </JUCER_COMPONENT>
 
 END_JUCER_METADATA

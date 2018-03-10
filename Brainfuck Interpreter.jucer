@@ -4,7 +4,7 @@
               reportAppUsage="0" splashScreenColour="Dark" projectType="guiapp"
               version="0.1.0" bundleIdentifier="com.yourcompany.BrainfuckInterpreter"
               includeBinaryInAppConfig="1" cppLanguageStandard="11" companyCopyright=""
-              jucerVersion="5.2.0">
+              jucerVersion="5.2.1">
   <MAINGROUP id="BrLmtu" name="Brainfuck Interpreter">
     <GROUP id="{A13DFE0D-9CFB-E870-FFE7-6CA7B15A5331}" name="Source">
       <FILE id="nnL9SV" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
