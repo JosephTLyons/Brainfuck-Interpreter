@@ -24,6 +24,8 @@
  ==============================================================================
  */
 
+// This code was directly taken from the JUCE demo and slightly modified
+
 #include "../JuceLibraryCode/JuceHeader.h"
 
 
