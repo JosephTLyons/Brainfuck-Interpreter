@@ -95,8 +95,15 @@ void Interpreter::loop (const String &brainfuckCode, int i)
             return;
         }
     }
-
+    
     closingBracketIndex = j;
+    
+    // Check to make sure loop body has something in it (
+    if (brainfuckCode.substring(openingBracketIndex + 1, closingBracketIndex).isEmpty())
+    {
+        warningText += "Empty Loop.";
+        return;
+    }
 
     // Loop through the code inside brackets
     while (tapeArray[tapeArrayIndex] != 0)
