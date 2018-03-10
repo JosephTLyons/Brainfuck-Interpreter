@@ -99,9 +99,12 @@ void Interpreter::loop (const String &brainfuckCode, int i)
 
 void Interpreter::parseText (const String &brainfuckCode)
 {
+<<<<<<< HEAD
 //    Logger::writeToLog ("Length of array is " + (String) brainfuckCode.length());
 //    Logger::writeToLog (brainfuckCode);
 
+=======
+>>>>>>> 65b0b9cc2acbf894e2aeedb831c597938663a7c1
     for (brainfuckCodeIndex = 0; brainfuckCodeIndex < brainfuckCode.length(); brainfuckCodeIndex++)
     {
         if (brainfuckCode[brainfuckCodeIndex] == '+')
