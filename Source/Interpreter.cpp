@@ -78,8 +78,8 @@ void Interpreter::loop (const String &brainfuckCode, int i)
     // Search for closing bracket
     for (; brainfuckCode[i] != ']'; i++)
     {
-        // if not found, leave looping function (fix bug here with code "+ [ + }")
-        if (i == TAPE_ARRAY_SIZE - 1)
+        // if not found, leave looping function
+        if (i == (brainfuckCode.length() - 1) || (i == (TAPE_ARRAY_SIZE - 1)))
         {
             warningText += "Missing ']'";
             return;
