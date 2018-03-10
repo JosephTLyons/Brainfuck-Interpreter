@@ -45,6 +45,8 @@ public:
         addAndMakeVisible (editor = new CodeEditorComponent (codeDocument, 0));
         
         lookAndFeelChanged();
+        
+        codeDocument.setNewLineCharacters ("\n");
     }
 
     ~CodeEditor()
