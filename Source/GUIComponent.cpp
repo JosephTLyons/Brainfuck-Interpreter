@@ -32,19 +32,6 @@ GUIComponent::GUIComponent ()
     //[Constructor_pre] You can add your own custom stuff here..
     //[/Constructor_pre]
 
-    addAndMakeVisible (brainfuckCodeEditor = new TextEditor ("brainfuckCodeEditor"));
-    brainfuckCodeEditor->setMultiLine (true);
-    brainfuckCodeEditor->setReturnKeyStartsNewLine (true);
-    brainfuckCodeEditor->setReadOnly (false);
-    brainfuckCodeEditor->setScrollbarsShown (true);
-    brainfuckCodeEditor->setCaretVisible (true);
-    brainfuckCodeEditor->setPopupMenuEnabled (true);
-    brainfuckCodeEditor->setColour (TextEditor::textColourId, Colours::white);
-    brainfuckCodeEditor->setColour (TextEditor::highlightColourId, Colour (0xbfffffff));
-    brainfuckCodeEditor->setText (String());
-
-    brainfuckCodeEditor->setBounds (0, 100, 600, 100);
-
     addAndMakeVisible (inputEditor = new TextEditor ("inputEditor"));
     inputEditor->setMultiLine (false);
     inputEditor->setReturnKeyStartsNewLine (false);
@@ -138,6 +125,12 @@ GUIComponent::GUIComponent ()
 
 
     //[Constructor] You can add your own custom stuff here..
+
+    codeEditor = new CodeEditor;
+    addAndMakeVisible (codeEditor);
+
+    codeEditor->setBounds (0, 100, getWidth(), 100);
+
     //[/Constructor]
 }
 
@@ -146,7 +139,6 @@ GUIComponent::~GUIComponent()
     //[Destructor_pre]. You can add your own custom destruction code here..
     //[/Destructor_pre]
 
-    brainfuckCodeEditor = nullptr;
     inputEditor = nullptr;
     outputEditor = nullptr;
     errorMessagesEditor = nullptr;
@@ -158,6 +150,9 @@ GUIComponent::~GUIComponent()
 
 
     //[Destructor]. You can add your own custom destruction code here..
+
+    codeEditor = nullptr;
+
     //[/Destructor]
 }
 
@@ -195,7 +190,7 @@ void GUIComponent::buttonClicked (Button* buttonThatWasClicked)
         errorMessagesEditor->clear();
 
         interpreter.setInputText (inputEditor->getText());
-        interpreter.parseText (brainfuckCodeEditor->getText());
+        interpreter.parseText (codeEditor->getText());
         outputEditor->setText (interpreter.getOutputText());
         errorMessagesEditor->setText (interpreter.getWarningText());
         interpreter.reset();
@@ -227,10 +222,6 @@ BEGIN_JUCER_METADATA
                  snapPixels="8" snapActive="1" snapShown="1" overlayOpacity="0.330"
                  fixedSize="1" initialWidth="600" initialHeight="470">
   <BACKGROUND backgroundColour="ff505050"/>
-  <TEXTEDITOR name="brainfuckCodeEditor" id="59d491ad053b0a3f" memberName="brainfuckCodeEditor"
-              virtualName="" explicitFocusOrder="0" pos="0 100 600 100" textcol="ffffffff"
-              hilitecol="bfffffff" initialText="" multiline="1" retKeyStartsLine="1"
-              readonly="0" scrollbars="1" caret="1" popupmenu="1"/>
   <TEXTEDITOR name="inputEditor" id="ce63d681197cb556" memberName="inputEditor"
               virtualName="" explicitFocusOrder="0" pos="0 35 600 30" textcol="ffffffff"
               hilitecol="bfffffff" initialText="" multiline="0" retKeyStartsLine="0"

@@ -22,6 +22,7 @@
 //[Headers]     -- You can add your own extra header files here --
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "Interpreter.hpp"
+#include "CodeEditor.hpp"
 //[/Headers]
 
 
@@ -56,11 +57,11 @@ private:
     //[UserVariables]   -- You can add your own custom variables in this section.
 
     Interpreter interpreter;
+    ScopedPointer<CodeEditor> codeEditor;
 
     //[/UserVariables]
 
     //==============================================================================
-    ScopedPointer<TextEditor> brainfuckCodeEditor;
     ScopedPointer<TextEditor> inputEditor;
     ScopedPointer<TextEditor> outputEditor;
     ScopedPointer<TextEditor> errorMessagesEditor;
