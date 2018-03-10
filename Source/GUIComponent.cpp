@@ -187,7 +187,7 @@ void GUIComponent::buttonClicked (Button* buttonThatWasClicked)
         //[UserButtonCode_executeCodeButton] -- add your button handler code here..
 
         interpreter.setInputText (inputEditor->getText());
-        interpreter.parseText (codeEditor->getText());
+        interpreter.parseText (codeEditor->getText().removeCharacters (charactersToRemove));
         
         outputEditor->setText (interpreter.getOutputText());
         errorMessagesEditor->setText (interpreter.getWarningText());

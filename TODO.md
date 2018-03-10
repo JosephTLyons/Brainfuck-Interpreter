@@ -5,7 +5,6 @@
 * Refine codeEditor (font size, remove C++ specific colors)
 * Make all fonts monospace fonts
 * Create README.md
-* Strip all whitespace from code string before parsing
 
 # Bugs
 * Get nested loops working

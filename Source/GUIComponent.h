@@ -58,6 +58,7 @@ private:
 
     Interpreter interpreter;
     ScopedPointer<CodeEditor> codeEditor;
+    StringRef charactersToRemove = " \r\n";
 
     //[/UserVariables]
 
