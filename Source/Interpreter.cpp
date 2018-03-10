@@ -76,19 +76,27 @@ void Interpreter::addToOutputText()
 void Interpreter::loop (const String &brainfuckCode, int i)
 {
     openingBracketIndex = i;
+    
+    int j, numberOfIncorrectEndBrackets = 0;
 
-    // Search for closing bracket
-    for (; brainfuckCode[i] != ']'; i++)
+    // Search for correct closing bracket
+    for (j = i + 1; ; j++)
     {
-        // if not found, leave looping function
-        if (i == (brainfuckCode.length() - 1) || (i == (TAPE_ARRAY_SIZE - 1)))
+        if (brainfuckCode[j] == '[')
+            numberOfIncorrectEndBrackets++;
+        
+        if (brainfuckCode[j] == ']' && numberOfIncorrectEndBrackets == 0)
+            break;
+        
+        // if not found, report error and leave looping function
+        if (j == brainfuckCode.length() - 1)
         {
             warningText += "Missing ']'.";
             return;
         }
     }
 
-    closingBracketIndex = i;
+    closingBracketIndex = j;
 
     // Loop through the code inside brackets
     while (tapeArray[tapeArrayIndex] != 0)
