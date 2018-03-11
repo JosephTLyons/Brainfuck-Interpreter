@@ -37,16 +37,16 @@ public:
     CodeEditor()
     {
         codeDocument.insertText (0, "Brainfuck code goes here");
+        codeDocument.setNewLineCharacters ("\n");
         
         setOpaque (true);
 
         // Create the editor..
         //addAndMakeVisible (editor = new CodeEditorComponent (codeDocument, &cppTokeniserFunctions));
         addAndMakeVisible (editor = new CodeEditorComponent (codeDocument, 0));
+        editor->setFont (16);
         
         lookAndFeelChanged();
-        
-        codeDocument.setNewLineCharacters ("\n");
     }
 
     ~CodeEditor()

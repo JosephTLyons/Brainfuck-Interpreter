@@ -2,7 +2,7 @@
 * Make GUI resizeable
 
 # Enhancements
-* Refine codeEditor (font size, remove C++ specific colors)
+* Refine codeEditor (remove C++ specific colors and try to have it work with BF)
 * Make all fonts monospace fonts
 * Create README.md
 
