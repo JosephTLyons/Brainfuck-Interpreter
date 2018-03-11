@@ -4,6 +4,7 @@
 # Enhancements
 * Refine codeEditor (remove C++ specific colors and try to have it work with BF)
 * Make all fonts monospace fonts
+* Make editor bigger and any general GUI improvements over this prototype
 * Create README.md
 
 # Bugs
