@@ -30,7 +30,7 @@ private:
     void decrementIndex();
     void acceptInput();
     void addToOutputText();
-    void loop (const String &brainfuckCode, int i);
+    void loop (const String &brainfuckCode, const int &i);
 
 public:
     Interpreter();

@@ -73,7 +73,7 @@ void Interpreter::addToOutputText()
     outputText += (char) tapeArray[tapeArrayIndex];
 }
 
-void Interpreter::loop (const String &brainfuckCode, int i)
+void Interpreter::loop (const String &brainfuckCode, const int &i)
 {
     openingBracketIndex = i;
     
