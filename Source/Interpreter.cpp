@@ -104,7 +104,7 @@ bool Interpreter::correctMatchingEndBracketFound (const String &brainfuckCode)
 {
     numberOfIncorrectEndBrackets = 0;
     
-    for (closingBracketIndex = openingBracketIndex + 1; ; closingBracketIndex++)
+    for (closingBracketIndex = openingBracketIndex + 1; closingBracketIndex < brainfuckCode.length(); closingBracketIndex++)
     {
         if (brainfuckCode[closingBracketIndex] == '[')
             numberOfIncorrectEndBrackets++;
@@ -117,10 +117,9 @@ bool Interpreter::correctMatchingEndBracketFound (const String &brainfuckCode)
             else
                 numberOfIncorrectEndBrackets--;
         }
-        
-        else if (closingBracketIndex == brainfuckCode.length() - 1)
-            return false;
     }
+    
+    return false;
 }
 
 void Interpreter::parseText (const String &brainfuckCode)
