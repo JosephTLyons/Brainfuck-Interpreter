@@ -79,7 +79,10 @@ void Interpreter::loop (const String &brainfuckCode, const int &openBracketIndex
     openingBracketIndex = openBracketIndex;
 
     if (! correctMatchingEndBracketFound (brainfuckCode))
+    {
+        warningText += "Missing ']'.";
         return;
+    }
     
     // Check to make sure loop body has something in it (
     if (brainfuckCode.substring(openingBracketIndex + 1, closingBracketIndex).isEmpty())
@@ -101,21 +104,22 @@ bool Interpreter::correctMatchingEndBracketFound (const String &brainfuckCode)
 {
     numberOfIncorrectEndBrackets = 0;
     
-    // Search for correct closing bracket
     for (closingBracketIndex = openingBracketIndex + 1; ; closingBracketIndex++)
     {
         if (brainfuckCode[closingBracketIndex] == '[')
             numberOfIncorrectEndBrackets++;
         
-        if (brainfuckCode[closingBracketIndex] == ']' && numberOfIncorrectEndBrackets == 0)
-            return true;
-        
-        // If not found, report error and leave looping function
-        if (closingBracketIndex == brainfuckCode.length() - 1)
+        else if (brainfuckCode[closingBracketIndex] == ']')
         {
-            warningText += "Missing ']'.";
-            return false;
+            if (numberOfIncorrectEndBrackets == 0)
+                return true;
+            
+            else
+                numberOfIncorrectEndBrackets--;
         }
+        
+        else if (closingBracketIndex == brainfuckCode.length() - 1)
+            return false;
     }
 }
 
