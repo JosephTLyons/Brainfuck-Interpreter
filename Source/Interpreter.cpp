@@ -80,14 +80,14 @@ void Interpreter::loop (const String &brainfuckCode, const int &openBracketIndex
 
     if (! correctMatchingEndBracketFound (brainfuckCode))
     {
-        warningText += "Missing ']'.";
+        warningText += "Missing ']'.\n";
         return;
     }
     
     // Check to make sure loop body has something in it
     if (brainfuckCode.substring(openingBracketIndex + 1, closingBracketIndex).isEmpty())
     {
-        warningText += "Empty Loop.";
+        warningText += "Empty Loop.\n";
         return;
     }
 
