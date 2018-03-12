@@ -44,7 +44,7 @@ public:
         // Create the editor..
         //addAndMakeVisible (editor = new CodeEditorComponent (codeDocument, &cppTokeniserFunctions));
         addAndMakeVisible (editor = new CodeEditorComponent (codeDocument, 0));
-        editor->setFont (16);
+        //editor->setFont (16);
         
         lookAndFeelChanged();
     }
