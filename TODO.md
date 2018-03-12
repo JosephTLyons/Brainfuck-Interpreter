@@ -10,6 +10,7 @@
 # Bugs
 * Get nested loops working
 * Fix bug with printing values when decrementing cells from 0
+* Space after text when using the font size of 16
 
 
 # Miscellaneous
