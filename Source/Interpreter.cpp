@@ -24,6 +24,7 @@ void Interpreter::zeroOut()
     inputTextIndex = 0;
     openingBracketIndex = 0;
     closingBracketIndex = 0;
+    numberOfIncorrectEndBrackets = 0;
     brainfuckCodeIndex = 0;
 }
 
@@ -73,12 +74,10 @@ void Interpreter::addToOutputText()
     outputText += (char) tapeArray[tapeArrayIndex];
 }
 
-void Interpreter::loop (const String &brainfuckCode, const int &openBracketIndex)
+bool Interpreter::correctMatchingEndBracketFound (const String &brainfuckCode)
 {
-    openingBracketIndex = openBracketIndex;
+    numberOfIncorrectEndBrackets = 0;
     
-    int numberOfIncorrectEndBrackets = 0;
-
     // Search for correct closing bracket
     for (closingBracketIndex = openingBracketIndex + 1; ; closingBracketIndex++)
     {
@@ -86,15 +85,23 @@ void Interpreter::loop (const String &brainfuckCode, const int &openBracketIndex
             numberOfIncorrectEndBrackets++;
         
         if (brainfuckCode[closingBracketIndex] == ']' && numberOfIncorrectEndBrackets == 0)
-            break;
+            return true;
         
         // If not found, report error and leave looping function
         if (closingBracketIndex == brainfuckCode.length() - 1)
         {
             warningText += "Missing ']'.";
-            return;
+            return false;
         }
     }
+}
+
+void Interpreter::loop (const String &brainfuckCode, const int &openBracketIndex)
+{
+    openingBracketIndex = openBracketIndex;
+
+    if (! correctMatchingEndBracketFound (brainfuckCode))
+        return;
     
     // Check to make sure loop body has something in it (
     if (brainfuckCode.substring(openingBracketIndex + 1, closingBracketIndex).isEmpty())
@@ -107,7 +114,7 @@ void Interpreter::loop (const String &brainfuckCode, const int &openBracketIndex
     while (tapeArray[tapeArrayIndex] != 0)
         parseText (brainfuckCode.substring(openingBracketIndex + 1, closingBracketIndex));
 
-    // Assign the closingBracketIndex so that when we return to the parsing method
+    // Assign the closingBracketIndex so that when we return to the parsing method after the loop,
     // We don't execute the code in the loop one more time
     brainfuckCodeIndex = closingBracketIndex;
 }

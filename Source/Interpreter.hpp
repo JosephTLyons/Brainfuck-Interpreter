@@ -21,6 +21,7 @@ private:
     int inputTextIndex;
 
     int openingBracketIndex, closingBracketIndex;
+    int numberOfIncorrectEndBrackets;
     int brainfuckCodeIndex;
 
     // Methods for operators
@@ -30,6 +31,7 @@ private:
     void decrementIndex();
     void acceptInput();
     void addToOutputText();
+    bool correctMatchingEndBracketFound (const String &brainfuckCode);
     void loop (const String &brainfuckCode, const int &openBracketIndex);
 
 public:
