@@ -74,28 +74,6 @@ void Interpreter::addToOutputText()
     outputText += (char) tapeArray[tapeArrayIndex];
 }
 
-bool Interpreter::correctMatchingEndBracketFound (const String &brainfuckCode)
-{
-    numberOfIncorrectEndBrackets = 0;
-    
-    // Search for correct closing bracket
-    for (closingBracketIndex = openingBracketIndex + 1; ; closingBracketIndex++)
-    {
-        if (brainfuckCode[closingBracketIndex] == '[')
-            numberOfIncorrectEndBrackets++;
-        
-        if (brainfuckCode[closingBracketIndex] == ']' && numberOfIncorrectEndBrackets == 0)
-            return true;
-        
-        // If not found, report error and leave looping function
-        if (closingBracketIndex == brainfuckCode.length() - 1)
-        {
-            warningText += "Missing ']'.";
-            return false;
-        }
-    }
-}
-
 void Interpreter::loop (const String &brainfuckCode, const int &openBracketIndex)
 {
     openingBracketIndex = openBracketIndex;
@@ -117,6 +95,28 @@ void Interpreter::loop (const String &brainfuckCode, const int &openBracketIndex
     // Assign the closingBracketIndex so that when we return to the parsing method after the loop,
     // We don't execute the code in the loop one more time
     brainfuckCodeIndex = closingBracketIndex;
+}
+
+bool Interpreter::correctMatchingEndBracketFound (const String &brainfuckCode)
+{
+    numberOfIncorrectEndBrackets = 0;
+    
+    // Search for correct closing bracket
+    for (closingBracketIndex = openingBracketIndex + 1; ; closingBracketIndex++)
+    {
+        if (brainfuckCode[closingBracketIndex] == '[')
+            numberOfIncorrectEndBrackets++;
+        
+        if (brainfuckCode[closingBracketIndex] == ']' && numberOfIncorrectEndBrackets == 0)
+            return true;
+        
+        // If not found, report error and leave looping function
+        if (closingBracketIndex == brainfuckCode.length() - 1)
+        {
+            warningText += "Missing ']'.";
+            return false;
+        }
+    }
 }
 
 void Interpreter::parseText (const String &brainfuckCode)

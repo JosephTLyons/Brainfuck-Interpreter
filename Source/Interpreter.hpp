@@ -31,8 +31,10 @@ private:
     void decrementIndex();
     void acceptInput();
     void addToOutputText();
-    bool correctMatchingEndBracketFound (const String &brainfuckCode);
     void loop (const String &brainfuckCode, const int &openBracketIndex);
+    
+    // Methods belonging to operator methods
+    bool correctMatchingEndBracketFound (const String &brainfuckCode);
 
 public:
     Interpreter();
