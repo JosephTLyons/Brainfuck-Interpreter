@@ -85,7 +85,7 @@ void Interpreter::loop (const String &brainfuckCode, const int &openBracketIndex
     }
     
     // Check to make sure loop body has something in it
-    if (brainfuckCode.substring(openingBracketIndex + 1, closingBracketIndex).isEmpty())
+    if (brainfuckCode.substring (openingBracketIndex + 1, closingBracketIndex).isEmpty())
     {
         warningText += "Empty Loop.\n";
         return;
