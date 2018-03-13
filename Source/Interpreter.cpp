@@ -40,8 +40,6 @@ void Interpreter::decrementCellValue()
 {
     if (tapeArray[tapeArrayIndex] == 0)
         warningText += "Warning: Negative overflow occured at cell " + (String) tapeArrayIndex + ".\n";
-    
-    Logger::writeToLog((String) tapeArray[tapeArrayIndex]);
 
     tapeArray.set (tapeArrayIndex, tapeArray[tapeArrayIndex] - 1);
 }
