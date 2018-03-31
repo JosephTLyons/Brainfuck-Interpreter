@@ -26,12 +26,37 @@ void Interpreter::zeroOut()
     closingBracketIndex = 0;
     numberOfIncorrectEndBrackets = 0;
     brainfuckCodeIndex = 0;
+
+void Interpreter::addWarningToWarningText (const int &warningNumber)
+{
+    warningText += (String) ++warningCounter;
+    warningText += ") ";
+    
+    if (warningNumber == 1)
+        warningText += "Warning: Positive overflow occured at cell " + (String) tapeArrayIndex + ".";
+    
+    else if (warningNumber == 2)
+        warningText += "Warning: Negative overflow occured at cell " + (String) tapeArrayIndex + ".";
+    
+    else if (warningNumber == 3)
+        warningText += "Error: Attemping to access cell 300000, index adjusted to remain at cell 29999.";
+        
+    else if (warningNumber == 4)
+       warningText += "Error: Attemping to access cell -1, index adjusted to remain at cell 0.";
+        
+    else if (warningNumber == 5)
+        warningText += "Missing ']'.";
+        
+    else if (warningNumber == 6)
+        warningText += "Empty Loop.";
+    
+    warningText += "\n";
 }
 
 void Interpreter::incrementCellValue()
 {
     if (tapeArray[tapeArrayIndex] == 255)
-        warningText += (String) (++warningCounter) + ") Warning: Positive overflow occured at cell " + (String) tapeArrayIndex + ".\n";
+        addWarningToWarningText (1);
 
     tapeArray.set (tapeArrayIndex, tapeArray[tapeArrayIndex] + 1);
 }
@@ -39,7 +64,7 @@ void Interpreter::incrementCellValue()
 void Interpreter::decrementCellValue()
 {
     if (tapeArray[tapeArrayIndex] == 0)
-        warningText += (String) (++warningCounter) + ") Warning: Negative overflow occured at cell " + (String) tapeArrayIndex + ".\n";
+        addWarningToWarningText (2);
 
     tapeArray.set (tapeArrayIndex, tapeArray[tapeArrayIndex] - 1);
 }
@@ -47,9 +72,7 @@ void Interpreter::decrementCellValue()
 void Interpreter::incrementIndex()
 {
     if (tapeArrayIndex == TAPE_ARRAY_SIZE - 1)
-    {
-        warningText += (String) (++warningCounter) + ") Error: Attemping to access cell 300000, index adjusted to remain at cell 29999.\n";
-    }
+        addWarningToWarningText (3);
 
     else
         tapeArrayIndex++;
@@ -58,7 +81,7 @@ void Interpreter::incrementIndex()
 void Interpreter::decrementIndex()
 {
     if (tapeArrayIndex == 0)
-        warningText += (String) (++warningCounter) + ") Error: Attemping to access cell -1, index adjusted to remain at cell 0.\n";
+        addWarningToWarningText (4);
 
     else
         tapeArrayIndex--;
@@ -80,14 +103,14 @@ void Interpreter::loop (const String &brainfuckCode, const int &openBracketIndex
 
     if (! correctMatchingEndBracketFound (brainfuckCode))
     {
-        warningText += (String) (++warningCounter) + ") Missing ']'.\n";
+        addWarningToWarningText (5);
         return;
     }
     
     // Check to make sure loop body has something in it
     if (brainfuckCode.substring (openingBracketIndex + 1, closingBracketIndex).isEmpty())
     {
-        warningText += (String) (++warningCounter) + ") Empty Loop.\n";
+        addWarningToWarningText (6);
         return;
     }
 

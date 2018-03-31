@@ -24,6 +24,8 @@ private:
     int openingBracketIndex, closingBracketIndex;
     int numberOfIncorrectEndBrackets;
     int brainfuckCodeIndex;
+    
+    void addWarningToWarningText (const int &warningNumber);
 
     // Methods for operators
     void incrementCellValue();
