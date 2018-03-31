@@ -31,7 +31,7 @@ void Interpreter::zeroOut()
 void Interpreter::incrementCellValue()
 {
     if (tapeArray[tapeArrayIndex] == 255)
-        warningText += "Warning: Positive overflow occured at cell " + (String) tapeArrayIndex + ".\n";
+        warningText += (String) (++warningCounter) + ") Warning: Positive overflow occured at cell " + (String) tapeArrayIndex + ".\n";
 
     tapeArray.set (tapeArrayIndex, tapeArray[tapeArrayIndex] + 1);
 }
@@ -39,7 +39,7 @@ void Interpreter::incrementCellValue()
 void Interpreter::decrementCellValue()
 {
     if (tapeArray[tapeArrayIndex] == 0)
-        warningText += "Warning: Negative overflow occured at cell " + (String) tapeArrayIndex + ".\n";
+        warningText += (String) (++warningCounter) + ") Warning: Negative overflow occured at cell " + (String) tapeArrayIndex + ".\n";
 
     tapeArray.set (tapeArrayIndex, tapeArray[tapeArrayIndex] - 1);
 }
@@ -47,7 +47,9 @@ void Interpreter::decrementCellValue()
 void Interpreter::incrementIndex()
 {
     if (tapeArrayIndex == TAPE_ARRAY_SIZE - 1)
-        warningText += "Error: Attemping to access cell 300000, index adjusted to remain at cell 29999.\n";
+    {
+        warningText += (String) (++warningCounter) + ") Error: Attemping to access cell 300000, index adjusted to remain at cell 29999.\n";
+    }
 
     else
         tapeArrayIndex++;
@@ -56,7 +58,7 @@ void Interpreter::incrementIndex()
 void Interpreter::decrementIndex()
 {
     if (tapeArrayIndex == 0)
-        warningText += "Error: Attemping to access cell -1, index adjusted to remain at cell 0.\n";
+        warningText += (String) (++warningCounter) + ") Error: Attemping to access cell -1, index adjusted to remain at cell 0.\n";
 
     else
         tapeArrayIndex--;
@@ -78,14 +80,14 @@ void Interpreter::loop (const String &brainfuckCode, const int &openBracketIndex
 
     if (! correctMatchingEndBracketFound (brainfuckCode))
     {
-        warningText += "Missing ']'.\n";
+        warningText += (String) (++warningCounter) + ") Missing ']'.\n";
         return;
     }
     
     // Check to make sure loop body has something in it
     if (brainfuckCode.substring (openingBracketIndex + 1, closingBracketIndex).isEmpty())
     {
-        warningText += "Empty Loop.\n";
+        warningText += (String) (++warningCounter) + ") Empty Loop.\n";
         return;
     }
 

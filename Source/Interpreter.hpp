@@ -18,6 +18,7 @@ private:
     int tapeArrayIndex;
 
     String outputText, warningText, inputText;
+    int warningCounter;
     int inputTextIndex;
 
     int openingBracketIndex, closingBracketIndex;
