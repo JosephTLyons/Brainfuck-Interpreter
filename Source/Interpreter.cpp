@@ -26,12 +26,12 @@ void Interpreter::zeroOut()
     closingBracketIndex = 0;
     numberOfIncorrectEndBrackets = 0;
     brainfuckCodeIndex = 0;
-    warningCounter = 0;
+    warningLineCount = 0;
 }
 
 void Interpreter::addWarningToWarningText (const int &warningNumber)
 {
-    warningText += (String) ++warningCounter;
+    warningText += (String) ++warningLineCount;
     warningText += ") ";
     
     if (warningNumber == 1)
